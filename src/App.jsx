@@ -1,29 +1,32 @@
+import { useState } from "react";
+
 import UserInput from "./components/UserInput";
 import Result from "./components/Result";
 import { calculateInvestmentResults } from "./util/investment";
 
+let inputs = {
+  initialInvestment: 0,
+  annualInvestment: 0,
+  expectedReturn: 0,
+  duration: 0
+}
 
 function App() {
-  const inputs = {
-    initial_investment: 0,
-    annual_investment: 0,
-    expected_return: 0,
-    duration: 0
-  }
+  const [ results, setResults ] = useState([])
   
-  let results = []
 
-  function handleInputChange(inputs) {
-    results = calculateInvestmentResults(inputs)
+  function handleInputChange(key, value) {
+    const newInputs = {...inputs, key: value}
+    setResults(calculateInvestmentResults(newInputs))
+    inputs = newInputs
   }
 
   return (
     <>
       <UserInput 
         onInputChange={ handleInputChange }
-        inputs={ inputs }
       />
-      <Result />
+      <Result results={ results }/>
     </>
   );
 }
