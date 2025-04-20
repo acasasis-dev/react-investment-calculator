@@ -1,3 +1,6 @@
+import { formatter } from "../util/investment";
+
+
 export default function Result({ results }) {
 	let totalInterest = 0;
 	return (
@@ -17,10 +20,10 @@ export default function Result({ results }) {
 						return (
 							<tr key={ result.year }>
 								<td>{ result.year }</td>
-								<td>{ result.valueEndOfYear }</td>
-								<td>{ result.interest }</td>
-								<td></td>
-								<td>{ result.annualInvestment }</td>
+								<td>{ formatter.format(result.investmentValue) }</td>
+								<td>{ formatter.format(result.interest) }</td>
+								<td>{ formatter.format(result.totalInterest) }</td>
+								<td>{ formatter.format(result.investedCapital) }</td>
 							</tr>
 						)
 					}) }
