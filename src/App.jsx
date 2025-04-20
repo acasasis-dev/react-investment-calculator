@@ -16,9 +16,12 @@ function App() {
   
 
   function handleInputChange(key, value) {
-    const newInputs = {...inputs, key: value}
-    setResults(calculateInvestmentResults(newInputs))
-    inputs = newInputs
+    inputs = {...inputs, [key]: value}
+    setResults(_ => {
+      return [
+        ...calculateInvestmentResults(inputs)
+      ]
+    })
   }
 
   return (
