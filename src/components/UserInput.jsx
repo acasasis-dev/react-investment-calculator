@@ -1,21 +1,6 @@
-import { useState } from 'react';
-
-
 export default function UserInput({ onInputChange }) {
-	function handleInitInvestmentChange(event) {
-		onInputChange('initialInvestment', event.target.value)
-	}
-
-	function handleAnnualInvestmentChange(event) {
-		onInputChange('annualInvestment', event.target.value)
-	}
-
-	function handleExpectedReturnChange(event) {
-		onInputChange('expectedReturn', event.target.value)
-	}
-
-	function handleDurationChange(event) {
-		onInputChange('duration', event.target.value)
+	function handleInputChange(key, value) {
+		onInputChange(key, value)
 	}
 
 	return (
@@ -23,21 +8,37 @@ export default function UserInput({ onInputChange }) {
 			<div className="input-group">
 				<p>
 					<label>Initial Investment</label>
-					<input id="initial-investment" onChange={ handleInitInvestmentChange } />
+					<input
+						onChange={ event => {
+							handleInputChange('initialInvestment', event.target.value) 
+						}} 
+					/>
 				</p>
 				<p>
 					<label>Annual Investment</label>
-					<input id="annual-investment" onChange={ handleAnnualInvestmentChange } />
+					<input 
+						onChange={ event => {
+							handleInputChange('annualInvestment', event.target.value)
+						}}
+					/>
 				</p>
 			</div>
 			<div className="input-group">
 				<p>
 					<label>Expected Return</label>
-					<input id="expected-return" onChange={ handleExpectedReturnChange } />
+					<input
+						onChange={ event => {
+							handleInputChange('expectedReturn', event.target.value)
+						}}
+					/>
 				</p>
 				<p>
 					<label>Duration</label>
-					<input id="duration" onChange={ handleDurationChange } />
+					<input
+						onChange={ event => {
+							handleInputChange('duration', event.target.value)
+						}}
+					/>
 				</p>
 			</div>
 		</section>
