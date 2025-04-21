@@ -2,7 +2,6 @@ import { formatter } from "../util/investment";
 
 
 export default function Result({ results }) {
-	let totalInterest = 0;
 	return (
 		<>
 			<table id="result">

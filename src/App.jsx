@@ -14,6 +14,7 @@ let inputs = {
 function App() {
   const [ results, setResults ] = useState([])
   
+  const isInputsValid = Object.keys(inputs).every(input => inputs[input] > 0)
 
   function handleInputChange(key, value) {
     inputs = {...inputs, [key]: value}
@@ -29,7 +30,7 @@ function App() {
       <UserInput 
         onInputChange={ handleInputChange }
       />
-      <Result results={ results }/>
+      { isInputsValid && <Result results={ results }/> }
     </>
   );
 }
